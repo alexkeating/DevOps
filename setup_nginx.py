@@ -15,6 +15,5 @@ c.run('sudo apt-get update', pty=True)
 c.run('sudo apt-get install nginx', pty=True, watchers=[responder])
 app_list = c.run('sudo ufw app list', pty=True)
 c.run("sudo ufw allow 'Nginx HTTP'", pty=True)
-c.run("sudo ufw allow 'Nginx HTTPS'", pty=True)
 c.run('systemctl status nginx', pty=True)
 
