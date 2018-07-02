@@ -8,6 +8,15 @@ from fabric import Connection, Config
 
 # Helpful Articles for setting up DNS in Digital ocean
 # https://www.digitalocean.com/community/tutorials/an-introduction-to-dns-terminology-components-and-concepts
+
+"""
+This current script doesn't handle creating the actual
+nginx server block settings. You will need to redirect port 80
+as well as set up the server block for port 443.
+
+The below digital ocean link was invaluable.
+https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts
+"""
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-s", "--server_address", type=str, action="store",
