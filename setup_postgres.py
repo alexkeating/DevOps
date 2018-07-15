@@ -28,4 +28,4 @@ responder = Responder(
 )
 c.run('sudo apt-get update', pty=True, watchers=[responder])
 c.run('sudo apt-get install postgresql postgresql-contrib', pty=True, watchers=[responder])
-c.run('createuser --interactive', pty=True, watchers=[responder])
+c.run('sudo -u postgres createuser --interactive', pty=True)
