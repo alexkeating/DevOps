@@ -5,8 +5,18 @@ from fabric import Connection, Config
 
 # Directions provided by a Digital Ocean tutorial
 # https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
-SERVER_ADDRESS = os.getenv('SERVER_ADDRESS', '')
-c = Connection(SERVER_ADDRESS)
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-s", "--server_address", type=str, action="store",
+                    help="The connection string to the server. Usually user@ip.")
+args = parser.parse_args()
+
+if not args.server_address:
+    print("No server address provided")
+    exit(1)
+
+
+c = Connection(args.server_address)
 responder = Responder(
     pattern=r"Do you want to continue\? \[Y/n\]",
     response="y\n",
