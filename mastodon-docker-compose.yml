@@ -2,7 +2,7 @@ version: '3'
 services:
 
   web:
-    image: tootsuite/mastodon:v2.4.3
+    image: tootsuite/mastodon:v2.4.5
     restart: always
     env_file: .mastodon.env
     command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -17,7 +17,7 @@ services:
       - ./public/system:/mastodon/public/system
 
   streaming:
-    image: tootsuite/mastodon:v2.4.3
+    image: tootsuite/mastodon:v2.4.5
     restart: always
     env_file: .mastodon.env
     command: yarn start
@@ -28,7 +28,7 @@ services:
       - "0.0.0.0:8082:4000"
 
   sidekiq:
-    image: tootsuite/mastodon:v2.4.3
+    image: tootsuite/mastodon:v2.4.5
     restart: always
     env_file: .mastodon.env
     command: bundle exec sidekiq -q default -q mailers -q pull -q push
